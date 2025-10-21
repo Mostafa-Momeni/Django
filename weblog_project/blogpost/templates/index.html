@@ -1,0 +1,100 @@
+{% extends "_base.html" %}
+
+{% block titel %}Home{% endblock titel %}
+{% block content %}
+<div class="col-8 mx-3">
+    {% for post in post %}
+        <div class="container mt-5 p-4 shadow-lg">
+            <h2><a href="{{ post.get_absolute_url}}" class="text-decoration-none text-info">{{post.titel}}</a></h2>
+            <hr>
+            <p>{{post.description|truncatechars:250}}<a href="{{ post.get_absolute_url}}" class="text-decoration-none text-info"><span>مطالعه بیشتر</span></a></p>
+            <hr>
+            <h6 class="text-muted small">نویسنده: {{post.author}}</h6>
+            <h6 class="text-muted small">🧡{{ post.likesblog}}</h6>
+        </div>
+    {% endfor %}
+    <!-- paginator -->
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-3">
+        {# First page #}
+        {% comment %} {% if post.number > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        
+        {# Previous page #}
+        {% if post.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ post.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&lt;</span>
+                </a>
+            </li>
+        {% endif %} {% endcomment %}
+        
+        {% for num in paginator.page_range %}
+            {# show first page, last page, and pages around current page #}
+            {% if num == 1 or num == paginator.num_pages or num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+                {% if num == page_obj.number %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {# show ellipsis after first page if needed #}
+            {% elif num == 2 and page_obj.number > 4 %}
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            {# show ellipsis before last page if needed #}
+            {% elif num == paginator.num_pages|add:-1 and page_obj.number < paginator.num_pages|add:-3 %}
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {# Next page #}
+        {% comment %} {% if post.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{post.next_page_number}}" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&gt;</span>
+            </li>
+        {% endif %}
+        
+        {# Last page #}
+        {% if post.number < post.paginator.num_pages %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ post.paginator.num_pages }}" aria-label="Last">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&raquo;</span>
+            </li>
+        {% endif %} {% endcomment %}
+    </ul>
+    </nav>
+</div>
+{% endblock content %}

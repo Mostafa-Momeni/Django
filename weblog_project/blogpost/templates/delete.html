@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block titel %}Delete Post {{ post.titel }}{% endblock titel %}
+
+{% block content %}
+<div class="col-8 mx-3">
+    <div class="container mt-5 p-4 shadow-lg">
+        <h1>آیا از حذف پست {{ post.titel }} مطمئن هستید ؟ </h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <a class="btn btn-warning mt-4 me-4" href="{{ post.get_absolute_url }}">خیر بازگشت به جزئیات پست</a>
+            <button type="submit" class="btn btn-danger mt-4 me-4">بله مطمئن هستم</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

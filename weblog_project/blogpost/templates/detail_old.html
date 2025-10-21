@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+
+{% block titel %}Detail {{ post.titel }}{% endblock titel %}
+
+{% block content %}
+<div class="col-8 mx-3">
+    <div class="container mt-5 p-4 shadow-lg">
+        <h1><a href="#" class="text-decoration-none text-info">{{ post.titel }}</a></h1>
+        <hr>
+        <p>{{ post.description }}</p>
+        <hr>
+        <h6 class="text-muted small">نویسنده: {{ post.author }}</h6>
+        <h6 class="text-muted small">تاریخ ایجاد: {{ post.datetime_created }}</h6>
+        <h6 class="text-muted small">تاریخ آخرین ویرایش: {{ post.datetime_modified }}</h6>
+        <h6 class="text-muted small">🧡{{ post.likes }}</h6>
+    </div>
+    <div class="container mt-5 p-4 shadow">
+        {% if comments %}
+        {% for comment in comments %}
+            {% if comment.hide_name %}
+                <h4 class="mt-4">کاربری بیان کرده:</h4>
+            {% else %}
+                <h4 class="mt-4">{{comment.name}} بیان کرده:</h4>
+            {% endif %}
+            <p>{{comment.comment}}</p>
+            <hr>
+        {% endfor %}
+        {% else %}
+            <h4 class="mt-4">نظر خود را نسبت به این پست کامنت کنید</h4>
+        {% endif %}
+    </div>
+    <div class="container mt-5 p-4 shadow-lg">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="name">نام</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="نام"
+                        required>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="email">ایمیل</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="ایمیل">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">آدرس</label>
+                <input type="text" class="form-control" id="inputAddress" , name="address"
+                    placeholder="خیابان شریعتی کوچه پنجم ...">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">شهر</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="رشت">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="state">استان</label>
+                    <select id="inputState" name="province" class="form-control">
+                        <option selected>انتخاب کنید</option>
+                        <option value="تهران">تهران</option>
+                        <option value="گیلان">اصفهان</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="zip_code">کد پستی</label>
+                    <input type="text" class="form-control" id="zip_code" name="zip_code"
+                        placeholder="1234567890" min="10" max="10" pattern="[0-9]{10}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label" for="hide_name">
+                        <input class="form-check-input" type="checkbox" id="hide_name" name="hide_name"
+                            checked>
+                        نام من در سایت نمایش داده نشود و با نام ناشناس نظر من ثبت شود
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="w-100 form-control mt-3" rows="6" name="comment" id="comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-success mt-4 me-4">ارسال نظر</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

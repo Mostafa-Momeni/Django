@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "bootstrap-5.3.8/dist/css/bootstrap.min.css" %} ">
+    <link rel="stylesheet" href="{% static "css/index.css" %} ">
+    <title>{% block titel %}{% endblock titel %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url "home" %}">وبلاگ من</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url "home" %}">خانه</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "add" %}">اضافه کردن پست</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "recent_posts" %}">۵ پست آخر</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "favorites" %}">پست های مورد علاقه من</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "my_posts" %}">پست های من</a>
+                </li>
+                <li class="nav-item">
+                    <form method="post" action={% url "logout" %}>
+                        {% csrf_token %}
+                        <button class="nav-link" type="submit">خوش آمدی {{ user }} | <span class="text-primary">خروج</span></button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "password_change" %}"><span class="text-primary">تغیر رمز عبور</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "change_user_info" %}"><span class="text-primary">تغیر اطلاعات کاربری</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "login" %}"><span class="text-primary">وارد شوید</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "signup" %}"><span class="text-primary">ایجاد حساب کاربری</span></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container mb-5">
+        <div class="row">
+            {% block content %}{% endblock content %}
+            <div class="col-3">
+                <div class="container mt-5 p-4 shadow-lg">
+                    <h3>لینک های همکاران</h3>
+                    <hr>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                    <a href="#" class="text-decoration-none d-block my-3 me-3 text-success">همکار ۱</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-bottom w-100 text-center mb-2">
+        <span class="bg-dark text-white py-2 px-5 shadow-lg rounded-pill d-inline-block opacity-75">
+            هرگونه کپی برداری از این طراحی بلامانع است. حتی بدون ذکر منبع 😁
+        </span>
+    </div>
+    <script src="{% static "bootstrap-5.3.8/dist/js/bootstrap.min.js" %} "></script>
+</body>
+
+</html>

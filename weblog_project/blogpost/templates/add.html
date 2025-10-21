@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block titel %}
+    {% if page_name == "add" %}
+        Add
+    {% elif page_name == "update" %}
+        update for post {{ post.titel }}
+    {% endif %}
+{% endblock titel %}
+
+{% block content %}
+            <div class="col-8 mx-3">
+                <div class="container mt-5 p-4 shadow-lg">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="title">عنوان پست</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="عنوان پست" required value = "{{ post.titel }}">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="description">توضیحات</label>
+                                <textarea rows="10" class="form-control" id="description" name="description" placeholder="توضیحات"
+                                    required >{{ post.description }}</textarea>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="picture">تصویر</label>
+                                <input class="form-control" type="file" name="picture">
+                            </div>
+                                <button type="submit" class="btn btn-outline-success mt-4 me-4">
+                                    {% if page_name == "add" %}
+                                        ذخیره پست
+                                    {% elif page_name == "update" %}
+                                        ویرایش پست
+                                    {% endif %}
+                                </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+{% endblock content %}
