@@ -1,0 +1,84 @@
+img.pic{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+div.main{
+    display: grid;
+    grid-template-columns: 25% 20% 5% 50%;
+}
+
+div.main div.address{
+    margin: 16px 32px;
+}
+
+div.main div.phone{
+    margin: 16px 32px;
+    grid-column: 2;
+}
+
+div.main div.form{
+    grid-column: 4;
+}
+
+div.main div.form form label{
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    grid-column: 4;
+}
+
+div.main div.form form input{
+    display: inline-block;
+    width: 235px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 5px;
+    transition: .3s;
+    grid-column: 4;
+    padding: 4px;
+
+}
+
+div.main div.form form input:focus{
+    outline: red 2px solid;
+    border: 0;
+    border-radius: 10px;
+}
+
+div.main div.form form textarea{
+    display: inline-block;
+    border-radius: 16px;
+    margin: 5px 1px;
+    transition: .3s;
+    padding: 4px;
+    
+}
+
+div.main div.form form textarea:focus{
+    outline: red 2px solid;
+    border: 0;
+    border-radius: 10px;
+}
+
+div.main div.form form button.submit{
+    background-color: aqua;
+    width: 150px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    transition: .3s;
+    cursor: pointer
+}
+
+div.main div.form form button.submit:hover{
+    background-color: rgb(13, 118, 118);
+    outline: 0
+}

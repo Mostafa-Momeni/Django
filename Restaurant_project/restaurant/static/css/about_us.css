@@ -1,0 +1,17 @@
+div.main{
+    font-size: 1.2rem;
+    font-weight: 350;
+}
+
+img.pic{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 110vh;
+    z-index: -1;
+    opacity: 0.5;
+}
+

@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block background_image %}
+    <img class="pic" src=" {% static 'img/backgrounds/home.jpg' %}" alt="">
+{% endblock background_image %}
+
+{% block content %}
+    <p class="titele">به رستوران مصطفی خوش آمدید با کیک روی هر غذا می توانید از جزئیات مربوط به آن آگاه شوید و درصورت علاقه غذای مورد نظرتان را سفارش دهید.</p>
+    <div class="images">
+        {% for food in foods %}
+            <a href="{{ food.get_absolute_url }}"><img src="{{ food.image.url }}" alt="a picture"></a>
+        {% endfor %}
+    </div>
+{% endblock content %}

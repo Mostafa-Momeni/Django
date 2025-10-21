@@ -1,0 +1,85 @@
+h2{
+    line-height: 64px;
+}
+
+div.main{
+    display: flex;
+    width: 99vw;
+    /* height: 50vh; */
+    justify-content: space-around;
+    margin-bottom: 32px;
+}
+
+div.main div{
+    width: 46vw;
+}
+
+div.main div.left img{
+    margin: 2vw 0;
+    width: 30vw;
+    height: 20vw;
+}
+
+div.main div.right form.order_form{
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    row-gap: 15px;
+
+}
+
+div.main div.right form.order_form input:focus{
+    outline: red 2px solid;
+    border: 0;
+    border-radius: 10px;
+}
+
+div.main div.right form.order_form input.order{
+    grid-column: 2;
+    display: inline-block;
+    border: none;
+    background-color: aqua;
+    padding: .2vw;
+    border-radius: 10px;
+    font-size: 1em;
+    width: 32.5vw;
+    height: 40px;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 10px;
+    transition: .3s;
+}
+
+div.main div.right form.order_form input.order:hover{
+    background-color: rgb(13, 118, 118);
+    outline: 0;
+    cursor: pointer
+} 
+
+div.main div.right form.order_form label{
+    grid-column: 1;
+    display: inline-block;
+    width: 5vw;
+    margin: .7vw;
+}
+
+div.main div.right form.order_form input{
+    display: inline-block;
+    padding: .2vw;
+    border-radius: 10px;
+    font-size: 1em;
+    height: 40px;
+    margin: 5px;
+    transition: .3s;
+}
+
+div.main div.right form.order_form input[type="tel"]::placeholder{
+    text-align: left;
+}
+
+div.main div.right form.order_form input[type="email"]::placeholder{
+    text-align: left;
+}
+
+div.main div.right form.order_form input[type="email"]{
+    direction: ltr;
+}

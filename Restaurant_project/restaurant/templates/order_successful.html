@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block title %}{{ food.name }} order successful{% endblock title %}
+
+{% block background_image %}
+    <img class="pic" src={{ food.image.url }} alt="a food image">
+{% endblock background_image %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="main">
+        <div class="right">
+            <h2>نام محصول: {{ food.name }}</h2>
+            <h2>تعداد: {{ amount }}</h2>
+            <h2>توسط {{ name }} با شماره {{ phone_number }}سفارش داده شد</h2>
+            <h2>با تشکر از سفارش شما</h2>
+        </div>
+    </div>
+    <br>
+{% endblock content %}

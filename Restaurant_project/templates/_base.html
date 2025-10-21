@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% block css %}{% endblock css %}
+    <link rel="icon" type="images/x-icon" href="{% static 'img/logo/download.png'%}">
+</head>
+<body>
+    {% block background_image %}{% endblock background_image %}
+    <h1 class="titele">به رستوران مصطفی خوش آمدید</h1>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="{% url "home" %}">خانه</a></li>
+            <li><a href="{% url "breakfast" %}">منوی صبحانه</a></li>
+            <li><a href="{% url "lunch" %}">منوی ناهار</a></li>
+            <li><a href="{% url "dinner" %}">منوی شام</a></li>
+            <li><a href="{% url "fast_food" %}">منوی فست فود</a></li>
+            <li><a href="{% url "persian" %}">منوی ایرانی</a></li>
+            <li><a href="{% url "drinks" %}">نوشیدنی</a></li>
+            <div>
+                <ul>
+                    <li><a href="{% url "about_us" %}">درباره ما</a></li>
+                    <li><a href="{% url "contact_us" %}">تماس با ما</a></li>
+                </ul>
+            </div>
+        </ul>
+    </nav>
+
+{% if form.errors %}
+    {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+            <h1>{{ error }}</h1>
+        {% endfor %}
+    {% endfor %}    
+{% endif %}
+
+    {% block content %}{% endblock content %}
+    <hr>
+    <p class="footer">رستوران مصطفی</p>
+    <footer>
+        <div class="right">
+            <h2 class="coworker">لیست همکاران</h2>
+            <hr class="footer">
+            <a href="">رستوران محمد</a>
+            <a href="">رستوران علی</a>
+            <a href="">رستوران رضا</a>
+            <a href="">رستوران جعفر</a>
+            <a href="">رستوران حسین</a>
+            <a href="">رستوران تقی</a>
+        </div>
+        <div class="left">
+            <h2 class="conect_us">ما را در شبکات اجتماعی دنبال کنید</h2>
+            <hr class="footer">
+            <a href="#"><img class="footer_img" src="{% static 'img/soicial media/آپارات-removebg-preview.png'%}"   alt=""></a>
+            <a href="#"><img class="footer_img" src="{% static 'img/soicial media/اینستا-removebg-preview.png'%}"   alt=""></a>
+            <a href="#"><img class="footer_img" src="{% static 'img/soicial media/تویتر-removebg-preview.png'%}"    alt=""></a>
+            <a href="#"><img class="footer_img" src="{% static 'img/soicial media/فیس_بوک-removebg-preview.png'%}"  alt=""></a>
+            <a href="#"><img class="footer_img" src="{% static 'img/soicial media/واتساپ-removebg-preview.png'%}"   alt=""></a>
+        </div>
+    </footer>
+    <a href="#" class="up_arrow"><i class="fa fa-arrow-up"></i>
+    </a>
+    <hr>
+    <p class="last_p">Powered By: Mostafa Momeni©</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block title %}Conect us{% endblock title %}
+
+{% block background_image %}
+    <img class="pic" src="{% static "img/backgrounds/conect_us.jpg" %}" alt="conect us image">
+{% endblock background_image %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact_us.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="main">
+        <div class="address">
+            <span>آدرس: نتاایظرنتا شنذدرناتسکین لتکخهسی بتلئهخک سیبتلهخ فتاسقنی  یخرتخحت حخنت سحین تن حسهثن رن حن النتبیال عاسیبهلابو دذنمسب لنمادنتادلمنس تبخنلت نتغعهذغ ح عهخ عهخع هخع عهخ عغ لغفثمق نمست ئتلسیتم نتس نت خت خحتنحخ ثتق د نحثثه حختثثق </span>
+        </div>
+        <div class="phone">
+            <span>تلفن های تماس</span>
+            <br>
+            <span>123456789</span>
+            <br>
+            <span>9876543210</span>
+        </div>
+        <div class="form">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="name">نام:</label>
+                <input type="name" name="name" placeholder="نام خود را وارد نمایید">
+                <br>
+                <label for="email">آدرس ایمیل:</label>
+                <input type="email" name="email" placeholder="ایمیل خود را وارد کنید">
+                <br>
+                <textarea name="description" placeholder="متن پیام خود را وارد کنید" rows="7" cols="80" required></textarea>
+                <br>
+                <button class="submit" type="submit">ارسال</button>
+            </form>
+        </div>
+    </div>
+    <br>
+{% endblock content %}

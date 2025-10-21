@@ -1,0 +1,52 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block title %}{{ food.name }}{% endblock title %}
+
+{% block background_image %}
+    <img class="pic" src={{ food.image.url }} alt="a food image">
+{% endblock background_image %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="main">
+        <div class="right">
+            <h2>نام محصول: {{ food.name}}</h2>
+            {% if food.ingredients %}
+                <span>مواد تشکیل دهنده:{{ food.ingredients}}</span>
+            {% endif %}
+            <br>
+            {% if food.weight %}
+                <span>وزن:{{ food.weight }}گرم</span>
+            {% endif %}
+            <br>
+            {% if food.length %}
+                <span>قطر :{{ food.length }}</span>
+            {% endif %}
+            <br>
+            {% if food.description %}
+                <span>توضیحات:{{ food.description }} </span>
+            {% endif %}
+            <br>
+            {% if food.old_price %}
+                <p class="p_price">قیمت: {{ food.old_price }}</p>
+            {% endif %}
+            <p class="price">قیمت: {{ food.price}}</p>
+            <br>
+            <span> برای سفارش {{ food.name}}، بر روی دکمه زیر تصویر کلیک نمایید </span>
+        </div>
+        <div class="left">
+            <img src={{ food.image.url }} alt="">
+            <br>
+            <form action={% url "order" food.pk %} method="get">
+                {% csrf_token %}
+                <input class="order" type="submit" value="ثبت سفارش">
+            </form>
+        </div>
+    </div>
+    <br>
+{% endblock content %}

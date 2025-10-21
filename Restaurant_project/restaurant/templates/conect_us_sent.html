@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block title %}Conect us sent{% endblock title %}
+
+{% block background_image %}
+    <img class="pic" src="{% static "img/backgrounds/conect_us.jpg" %}" alt="conect us image">
+{% endblock background_image %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact_us.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="main">
+        <div class="right">
+            <p>{{ name }} عزیز، پیغام شما با موفقیت دریافت شد.</p>
+            <p>متن پیام دریافت شده:</p>
+            <p>{{ text }}</p>
+            <p>با تشکر از پیام ارزشمند شما</p>
+        </div>
+    </div>
+{% endblock content %}

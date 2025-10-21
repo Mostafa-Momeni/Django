@@ -1,0 +1,66 @@
+span{
+    line-height: 60px;
+}
+
+p{
+    line-height: 36px;
+}
+
+div.main{
+    display: flex;
+    width: 99vw;
+    /* height: 50vh; */
+    justify-content: space-around;
+    margin-bottom: 32px;
+}
+
+div.main div{
+    width: 46vw;
+}
+
+div.main div.left span{
+    margin: auto;
+    font-size: .5rem;
+    width: 30vw;
+    height: 20vw;
+}
+
+div.main div.left img{
+    margin: 2vw 0;
+    width: 30vw;
+    height: 20vw;
+}
+
+div.main div.left input.order{
+    display: inline-block;
+    margin: auto;
+    border: none;
+    background-color: aqua;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 1em;
+    width: 250px;
+    height: 40px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+div.main div.left input.order:hover{
+    background-color: rgb(13, 118, 118);
+    outline: 0;
+    cursor: pointer
+}
+
+div.main div.right p.p_price{
+    text-align: end;
+    text-decoration: line-through;
+    font-size: 1.5em;
+    color: brown;
+    font-weight: bold;
+}
+
+div.main div.right p.price{
+    text-align: end;
+    font-size: 1.5em;
+    font-weight: bold;
+}
